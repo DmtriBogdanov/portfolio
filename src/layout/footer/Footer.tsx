@@ -30,7 +30,7 @@ const StyledFooter = styled.footer`
 
 
 `
-const Copyright = styled.span`
+const Copyright = styled.small`
   position: absolute;
   bottom: 27px;
   left: 50%;

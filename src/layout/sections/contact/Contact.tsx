@@ -11,7 +11,7 @@ export const Contact = () => {
     <StyledContacts>
       <Container>
         <SectionTitle title="Contact" />
-        <FlexWrapper justify="space-between">
+        <FlexWrapper justify="space-between" wrap="wrap">
           <FlexWrapper direction="column" gap="15px">
             <ContactMap>
               <Map

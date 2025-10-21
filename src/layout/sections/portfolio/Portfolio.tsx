@@ -17,7 +17,7 @@ export const Portfolio = () => {
         <SectionTitle title="Portfolio" />
         <FlexWrapper direction="column" align="center" gap="40px">
           <TabMenu menuItems={portfolioItems} />
-          <FlexWrapper justify="space-between" gap="50px">
+          <FlexWrapper justify="space-between" gap="50px" wrap="wrap">
             <Work
               src={portfolioImg_1}
               title="TWINDER"

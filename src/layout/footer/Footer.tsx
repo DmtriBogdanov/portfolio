@@ -21,8 +21,7 @@ export const Footer = () => {
 
 const StyledFooter = styled.footer`
   position: relative;
-  // background-color: ${theme.colors.accent};
-  height: 330px;
+  min-height: 330px;
   display: flex;
   align-items: center;
   justify-content: center;

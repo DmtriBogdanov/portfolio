@@ -140,7 +140,15 @@ const SocialIconLink = styled.a`
   justify-content: center;
   width: 75px;
   height: 70px;
+  border: 2px solid ${theme.colors.accent};
   border-radius: ${theme.borderRadius};
   background-color: ${theme.colors.accent};
   color: ${theme.colors.light};
+  transition: ${theme.transactionDuration};
+  
+  &:hover {
+    transform: translateY(-5px);
+    background-color: transparent;
+    color: ${theme.colors.accent};
+  }
 `

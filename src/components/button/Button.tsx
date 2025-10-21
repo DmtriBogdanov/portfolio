@@ -22,4 +22,10 @@ const StyledButton = styled.button`
   width: 186px;
   height: 50px;
   background-color: #608af5;
+  transition: ${theme.transactionDuration};
+  
+  &:hover {
+    background-color: transparent;
+    color: ${theme.colors.accent};
+  }
 `

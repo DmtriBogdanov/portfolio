@@ -8,6 +8,8 @@ import portfolioImg_2 from "../../../assets/images/portfolio_2.webp"
 import portfolioImg_3 from "../../../assets/images/portfolio_3.webp"
 import {TabMenu, TabsStatusType} from "./TabMenu/TabMenu";
 import {useState} from "react";
+import {AnimatePresence, motion} from "motion/react"
+
 
 
 const tabsItems: Array<{ status: TabsStatusType, title: string }> = [
@@ -53,6 +55,7 @@ const workData = [
   },
 ]
 
+
 export const Portfolio = () => {
   const [currentFilterStatus, setCurrentFilterStatus] = useState("all")
   let filteredWorks = workData
@@ -85,16 +88,28 @@ export const Portfolio = () => {
           gap="50px"
           wrap="wrap"
         >
-          {filteredWorks.map((w) => {
-            return (
-              <Work
-                key={w.id}
-                src={w.src}
-                title={w.title}
-                text={w.text}
-              />
-            )
-          })}
+          <AnimatePresence>
+            {filteredWorks.map((w) => {
+              return (
+                <Motion
+                  layout
+                  initial={{opacity: 0}}
+                  animate={{opacity: 1}}
+                  exit={{opacity: 0}}
+                  key={w.id}
+                >
+                  <Work
+                    key={w.id}
+                    src={w.src}
+                    title={w.title}
+                    text={w.text}
+                  />
+                </Motion>
+
+              )
+            })}
+          </AnimatePresence>
+
         </FlexWrapper>
       </Container>
 
@@ -103,5 +118,15 @@ export const Portfolio = () => {
 };
 
 const StyledPortfolio = styled.section`
- 
+
+`
+
+const Motion = styled(motion.div)`
+  width: 300px;
+  flex-grow: 1;
+  
+  @media screen and (min-width: 1170px) {
+    max-width: 346px;
+  }
+  
 `

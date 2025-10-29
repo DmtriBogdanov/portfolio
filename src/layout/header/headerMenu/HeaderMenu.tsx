@@ -66,7 +66,7 @@ const StyledHeaderMenu = styled.nav<{ isOpen: boolean }>`
     width: 100%;
     height: 100%;
     padding: 115px 50px 50px;
-    transition: ${theme.transactionDuration};
+    transition: 0.4s;
     overflow-y: auto;
   }
 

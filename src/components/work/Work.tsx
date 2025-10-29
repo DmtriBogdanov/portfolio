@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {theme} from "../../styles/Theme";
 import {FlexWrapper} from "../flexWrapper/FlexWrapper";
 
+
 type WorkPropsType = {
   title: string;
   text: string;
@@ -25,8 +26,6 @@ export const Work = (props: WorkPropsType) => {
 };
 
 const StyledWork = styled.div`
-  width: 300px;
-  flex-grow: 1;
   box-shadow: 0 6px 30px 1px rgba(0, 0, 0, 0.25);
   background: ${theme.colors.light};
   padding: 16px 16px 23px;

@@ -80,7 +80,6 @@ const Link = styled.a<{active?: boolean}>`
     opacity: 1;
   `}  
   }
-?
   @media (hover: hover) {
     &:hover {
       &::before {

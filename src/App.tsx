@@ -6,6 +6,7 @@ import {Portfolio} from "./layout/sections/portfolio/Portfolio";
 import {Contact} from "./layout/sections/contact/Contact";
 import {Footer} from "./layout/footer/Footer";
 import {Particle} from "./components/particle/Particle";
+import {GoTopBtn} from "./components/goTopBtn/GoTopBtn";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Portfolio/>
       <Contact/>
       <Footer/>
+      <GoTopBtn/>
     </div>
   )
 }

@@ -12,10 +12,10 @@ export const Work = (props: WorkPropsType) => {
   return (
     <StyledWork>
       <Image src={props.src} alt="" />
-      <FlexWrapper direction="column" align="flex-start">
+      <FlexWrapper direction="column" align="flex-start" justify="space-between">
         <Title>{props.title}</Title>
         <Text>{props.text}</Text>
-        <FlexWrapper align="flex-start" gap="18px">
+        <FlexWrapper align="flex-start" gap="18px" wrap={"wrap"}>
           <Link href={"#"}>View Live</Link>
           <Link href={"#"}>Github Repo</Link>
         </FlexWrapper>
@@ -25,12 +25,13 @@ export const Work = (props: WorkPropsType) => {
 };
 
 const StyledWork = styled.div`
-  max-width: 343px;
-  width: 100%;
+  width: 300px;
+  flex-grow: 1;
   box-shadow: 0 6px 30px 1px rgba(0, 0, 0, 0.25);
   background: ${theme.colors.light};
   padding: 16px 16px 23px;
   border-radius: ${theme.borderRadius};
+  
 `
 
 const Image = styled.img`
@@ -56,6 +57,9 @@ const Text = styled.p`
 `
 
 const Link = styled.a`
+  display: inline-flex;
+  justify-content: center;
+  flex-grow: 1;
   padding: 10px 0;
   min-width: 145px;
   font-weight: 600;

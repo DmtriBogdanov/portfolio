@@ -21,14 +21,24 @@ export const Footer = () => {
 
 const StyledFooter = styled.footer`
   position: relative;
-  min-height: 330px;
+  padding: 244px 0 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${theme.colors.light};
   overflow: hidden;
 
+  @media ${theme.media.tablet} {
+    padding: 106px 0 50px;
+  }
 
+  @media ${theme.media.mobile} {
+    padding: 122px 0 40px;
+  }
+
+  @media ${theme.media.mobileSmall} {
+    padding: 96px 0 30px;
+  }
 `
 const Copyright = styled.small`
   position: absolute;
@@ -38,6 +48,15 @@ const Copyright = styled.small`
   z-index: 0;
   font-size: 16px;
   color: ${theme.colors.light};
+  text-align: center;
+  white-space: nowrap;
+  
+  @media ${theme.media.tablet} {
+    bottom: 12px;
+  }
+  @media ${theme.media.mobileSmall} {
+    font-size: 12px;
+  }
 `
 
 const Wave = styled.svg`
@@ -49,15 +68,15 @@ const Wave = styled.svg`
   width: 120%;
   height: auto;
 
-  @media (max-width: 1024px) {
+  @media ${theme.media.tablet} {
     width: 150%;
   }
 
-  @media (max-width: 768px) {
+  @media ${theme.media.mobile} {
     width: 200%;
   }
 
-  @media (max-width: 480px) {
+  @media ${theme.media.mobileSmall} {
     width: 250%;
   }
 `

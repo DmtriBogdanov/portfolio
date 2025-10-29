@@ -1,19 +1,31 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {theme} from "../../../../styles/Theme";
 
-type MenuPropsType = {
-  menuItems: Array<string>
+export type TabsStatusType = "all" | "landing" | "react" | "spa"
+
+type TabMenuPropsType = {
+  tabsItems: Array<{ status: TabsStatusType, title: string}>
+  changeFilterStatus: (value: TabsStatusType) => void
+  currentFilterStatus: string
 }
 
-export const TabMenu = (props: MenuPropsType) => {
+export const TabMenu = (props: TabMenuPropsType) => {
   return (
-    <StyledTabMenu>
-      <ul>
-        {props.menuItems.map((item, index) => {
+    <StyledTabMenu
+      role="navigation"
+      aria-label="Portfolio filter menu"
+    >
+      <ul role="menubar">
+        {props.tabsItems.map((item, index) => {
           return (
             <ListItem key={index}>
-              <Link  href="/">
-                {item}
+              <Link
+                active ={props.currentFilterStatus === item.status}
+                as={"button"}
+                onClick={() => {props.changeFilterStatus(item.status)}}
+                role="menuitem"
+              >
+                {item.title}
               </Link>
             </ListItem>
           )
@@ -24,17 +36,25 @@ export const TabMenu = (props: MenuPropsType) => {
 };
 
 const StyledTabMenu = styled.nav`
+  margin-bottom: 40px;
+
   ul {
     display: flex;
+    justify-content: center;
     gap: 30px;
+
+    @media ${theme.media.mobileSmall} {
+      gap: 20px;
+    }
   }
 `
 
 const ListItem = styled.li`
-  position: relative;
+
 `
 
-const Link = styled.a`
+const Link = styled.a<{active?: boolean}>`
+  position: relative;
   padding: 0 10px;
   font-weight: 400;
   font-size: 14px;
@@ -42,7 +62,7 @@ const Link = styled.a`
   color: ${theme.colors.dark};
   text-transform: uppercase;
   transition: ${theme.transactionDuration};
-  
+
   &::before {
     content: "";
     position: absolute;
@@ -51,15 +71,27 @@ const Link = styled.a`
     display: inline-block;
     height: 5px;
     width: 0;
-    background-color:${theme.colors.accent};
+    background-color: ${theme.colors.accent};
     opacity: 0;
     transition: ${theme.transactionDuration}, width 0.4s;
-  }
   
-  &:hover {
-    &::before {
-      width: 100%;
-      opacity: 1;
+  ${props => props.active && css<{ active?: boolean }>`
+    width: 100%;
+    opacity: 1;
+  `}  
+  }
+?
+  @media (hover: hover) {
+    &:hover {
+      &::before {
+        width: 100%;
+        opacity: 1;
+      }
     }
+  }
+
+
+  @media ${theme.media.mobileSmall} {
+    padding: 0;
   }
 `

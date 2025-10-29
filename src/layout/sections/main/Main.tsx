@@ -1,23 +1,36 @@
+import Typewriter from 'typewriter-effect';
 import {FlexWrapper} from "../../../components/flexWrapper/FlexWrapper";
 import {Container} from "../../../components/container/Container"
 import {theme} from "../../../styles/Theme";
 import styled from "styled-components";
+import {font} from "../../../styles/Common";
 
 export const Main = () => {
   return (
-    <StyledMain>
+    <StyledMain id={"about"}>
       <Container>
         <FlexWrapper
           justify={"space-between"}
           align={"center"}
+          gap={"20px"}
         >
           <ContentBox>
             <SmallText>Hi !</SmallText>
-            <Name>I’m Dmitry Bogdanov.</Name>
-            <MainTitle>Front-End Developer</MainTitle>
+            {/*<Name>I’m Dmitry Bogdanov.</Name>*/}
+            <MainTitle>
+              <p>Front-End Developer</p>
+              <Typewriter
+                options={{
+                  strings: ["I’m Dmitry Bogdanov", "Front-End Developer"],
+                  autoStart: true,
+                  loop: true,
+                  delay: 100,
+                }}
+              />
+            </MainTitle>
             <p>I’m a front-end developer from Russia who loves turning ideas into pixel-perfect web apps.</p>
           </ContentBox>
-          <Hero width="501" height="467" viewBox="0 0 501 467" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <Hero  viewBox="0 0 501 467" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_12_1902)">
                 <path d="M451.721 243.034C451.786 300.821 430.915 356.384 393.495 398.043C391.238 400.571 388.922 403.038 386.544 405.444C382.921 409.132 379.177 412.676 375.311 416.078C339.145 447.966 293.996 465.884 247.148 466.943C245.587 466.981 244.02 467 242.447 467C205.084 467 158.091 445.643 115.445 416.078C111.916 413.633 108.419 411.13 104.954 408.571C103.334 407.386 101.722 406.184 100.118 404.965C83.6696 392.536 68.0571 378.886 53.3952 364.117C43.7956 354.475 34.7936 344.174 26.4467 333.279C-6.32156 290.022 -13.5491 251.046 33.1676 243.034C38.6987 242.089 44.0668 241.078 49.2719 240.002C56.8117 238.451 64.0274 236.777 70.9191 234.978C80.2024 232.564 88.9241 229.946 97.0842 227.124C99.8292 226.178 102.511 225.214 105.131 224.23C143.854 209.675 169.772 190.694 187.413 170.1C190.406 166.614 193.164 163.086 195.689 159.516C199.553 154.082 203.062 148.37 206.192 142.42C210.512 134.154 214.141 125.494 217.036 116.543L217.195 116.052C231.232 72.7197 226.961 32.5271 242.447 19.0749C308.643 -38.4342 391.056 43.464 429.738 140.044C431.688 144.91 433.522 149.806 435.24 154.731C436.011 156.931 436.756 159.136 437.472 161.344C439.357 167.099 441.067 172.869 442.603 178.654C443.192 180.86 443.753 183.065 444.287 185.267C444.859 187.643 445.407 190.014 445.913 192.384C449.677 209.738 451.721 226.853 451.721 243.034Z" fill="#F2F2F2" />
                 <path d="M247.148 466.943C245.587 466.981 244.02 467 242.447 467C205.085 467 158.091 445.643 115.445 416.078C111.916 413.633 108.419 411.13 104.954 408.571L107.993 388.777L200.007 375.703L246.188 413.494L247.148 466.943Z" fill="#2F2E41" />
@@ -112,29 +125,41 @@ export const Main = () => {
 
 const StyledMain = styled.section`
   display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
+  
+  @media ${theme.media.tablet} {
+    padding-top: 100px;
+    ${FlexWrapper} {
+      flex-direction: column-reverse;
+    }
+  }
+  
 `
 
 const ContentBox = styled.div`
   text-align: left;
   max-width: 580px;
   color: ${theme.colors.titleColor};
-  & p {
-    font-size: 23px;
-    color: ${theme.colors.dark};
+  p {
+    ${font({Fmax: 23, Fmin: 14})}
   }
 `
-const Hero = styled.svg``
+const Hero = styled.svg`
+  max-width: 501px;
+`
 
 const MainTitle = styled.h1`
-  font-weight: 600;
-  font-size: 50px;
-  margin-bottom: 40px;
+  ${font({weight: 600, Fmax: 50, Fmin: 26, color: theme.colors.titleColor})};
+  margin-bottom: 30px;
+  p {
+    display: none;
+  }
 `
-const Name = styled.h2`
-  font-weight: 600;
-  font-size: 50px;
-`
+// const Name = styled.h2`
+//   ${font({weight: 600, Fmax: 50, Fmin: 26, color: theme.colors.titleColor})}
+// `
 const SmallText = styled.span`
-  font-size: 35px;
+  ${font({Fmax: 35, Fmin: 25, color: theme.colors.titleColor})}
 `

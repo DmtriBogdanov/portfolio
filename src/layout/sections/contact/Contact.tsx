@@ -8,13 +8,14 @@ import {theme} from "../../../styles/Theme";
 
 export const Contact = () => {
   return (
-    <StyledContacts>
+    <StyledContacts id={"contact"}>
       <Container>
         <SectionTitle title="Contact" />
-        <FlexWrapper justify="space-between" wrap="wrap">
-          <FlexWrapper direction="column" gap="15px">
+        <FlexWrapper justify="space-between" gap={"20px"}>
+          <MapWrapper>
             <ContactMap>
               <Map
+                title="google-map"
                 src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1122.8248352615644!2d37.53678560256959!3d55.74721574041895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z0LzQvtGB0LrQstCwINGB0LjRgtC4!5e0!3m2!1sru!2sru!4v1760794913008!5m2!1sru!2sru"
               />
 
@@ -50,7 +51,7 @@ export const Contact = () => {
                 </SocialIconLink>
               </SocialIconItem>
             </SocialIconsList>
-          </FlexWrapper>
+          </MapWrapper>
           <StyledForm>
             <Field placeholder="Name" />
             <Field placeholder="Email" />
@@ -72,6 +73,12 @@ export const Contact = () => {
 };
 
 const StyledContacts = styled.section`
+  @media ${theme.media.tablet} {
+    ${FlexWrapper} {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
   
 `
 
@@ -80,11 +87,11 @@ const StyledForm = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 
   textarea {
     resize: none;
-    height: 98px;
+    height: 116px;
     overflow: auto;
   }
 `
@@ -111,8 +118,17 @@ const Field = styled.input`
     outline: 2px solid ${theme.colors.accent};;
   }
 `
-
+const MapWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  width: 100%;
+  
+`
 const ContactMap = styled.div`
+  max-width: 500px;
+  width: 100%;
   border: 2px solid #608af5;
   border-radius: ${theme.borderRadius};
 `
@@ -120,13 +136,14 @@ const ContactMap = styled.div`
 const Map = styled.iframe`
   display: block;
   width: 100%;
-  min-height: 235px;
+  aspect-ratio: 16 / 9;
   border: none;
   border-radius: ${theme.borderRadius};
 `
 
 const SocialIconsList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   
 `
@@ -138,17 +155,20 @@ const SocialIconLink = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 75px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border: 2px solid ${theme.colors.accent};
   border-radius: ${theme.borderRadius};
   background-color: ${theme.colors.accent};
   color: ${theme.colors.light};
   transition: ${theme.transactionDuration};
   
-  &:hover {
-    transform: translateY(-5px);
-    background-color: transparent;
-    color: ${theme.colors.accent};
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-5px);
+      background-color: transparent;
+      color: ${theme.colors.accent};
+    }
   }
+  
 `

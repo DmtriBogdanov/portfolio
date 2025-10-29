@@ -32,7 +32,19 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   section {
-    padding: ${theme.sectionPadding};
+    padding: 80px 0;
+    
+    @media ${theme.media.tablet} {
+      padding: 60px 0;
+    }
+    
+    @media ${theme.media.mobile} {
+      padding: 35px 0;
+    }
+  }
+
+  .lock {
+    overflow: hidden;
   }
   
 `

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {theme} from "../../styles/Theme";
+import {font} from "../../styles/Common";
 
 type SectionTitlePropsType = {
   title: string
@@ -14,10 +15,15 @@ export default SectionTitle;
 
 
 const StyledSectionTitle = styled.h2`
-  font-weight: 600;
-  font-size: 35px;
-  letter-spacing: 0.18em;
+  ${font({weight: 600, Fmax: 35, Fmin: 26, color: theme.colors.titleColor})}
   text-align: center;
-  color: ${theme.colors.titleColor};
   margin-bottom: 60px;
+  
+  @media ${theme.media.tablet} {
+    margin-bottom: 40px;
+  }
+  
+  @media ${theme.media.mobile} {
+    margin-bottom: 30px;
+  }
 `

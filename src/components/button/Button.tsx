@@ -24,8 +24,11 @@ const StyledButton = styled.button`
   background-color: #608af5;
   transition: ${theme.transactionDuration};
   
-  &:hover {
-    background-color: transparent;
-    color: ${theme.colors.accent};
+  @media (hover: hover) {
+    &:hover {
+      background-color: transparent;
+      color: ${theme.colors.accent};
+    }
   }
+  
 `
